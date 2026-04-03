@@ -1,0 +1,22 @@
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:150vh;
+background:#4b414177;
+}
+
+form{
+background:rgb(47, 212, 231);
+padding: 40px;
+border-radius:15px;
+width:300px;
+}
+
+input,button{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:15px;
+
+}

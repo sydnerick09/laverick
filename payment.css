@@ -1,0 +1,23 @@
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#05052b;
+}
+
+form{
+background:#50f941cb;
+padding:15px;
+line-height: 3px;
+border-radius:15px;
+width:350px;
+}
+
+input,button{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:15px;
+
+}

@@ -1,0 +1,17 @@
+body{
+background:#05052b;
+color:white;
+padding:20px;
+}
+
+.task{
+background:#111;
+padding:20px;
+margin:15px 0;
+border-radius:10px;
+}
+
+.task a{
+float:right;
+color:#00aaff;
+}
