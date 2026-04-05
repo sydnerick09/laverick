@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Activation Payment</title>
-<link rel="stylesheet" href="payment.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mpesa Payment</title>
+    <link rel="stylesheet" href="payment.css">
 </head>
 <body>
 
-<form>
-<h2>Activate Task Access</h2>
-<p>KSh 100 Activation Fee</p>
+<div class="payment-container">
 
-<input type="text" placeholder="070000000/01000000">
+    <div class="header">
+        <h2>M-Pesa Payment</h2>
+        <p>To recieve tasks please pay a registration fee of ksh 100 to facilitate for registration  </p>
 
-<button>LIPA NA M-PESA</button>
+    </div>
 
-</form>
+    <div class="payment-body">
+
+        <div class="amount-box">
+            <p>
+                LIPA NA MPESA
+            </p>
+            <h3>Ksh 100</h3>
+        </div>
+
+        <form>
+            <label>Phone Number</label>
+            <input type="tel" placeholder="enter mpesa number here 07XXXXXXXX" required>
+
+            <button type="submit">Pay Now</button>
+        </form>
+
+        <div class="note">
+            Enter your registered M-Pesa number
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Powered by M-Pesa
+    </div>
+
+</div>
 
 </body>
 </html>

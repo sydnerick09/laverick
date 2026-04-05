@@ -1,23 +1,109 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
 body{
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:#05052b;
+    background:gray;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
-form{
-background:#50f941cb;
-padding:15px;
-line-height: 3px;
-border-radius:15px;
-width:350px;
+.payment-container{
+    width:350px;
+    background:rgb(58, 92, 231);
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    overflow:hidden;
 }
 
-input,button{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:15px;
+.header{
+   background:rgb(58, 92, 231);
+   color:white ;
+    text-align:center;
+    padding-top:10px;
+}
 
+.header h2{
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.payment-body{
+    padding:25px;
+}
+
+.amount-box{
+    background:#f8f9fa;
+    border:1px solid #dddddd;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    margin-bottom:20px;
+    font-size:18px;
+}
+
+.amount-box h3{
+    color:#00a651;
+    font-size:28px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:orange;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:13px;
+    margin-bottom:20px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#00a651;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#00a651;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#008f45;
+}
+
+.note{
+    text-align:center;
+    font-size:13px;
+    color:blue;
+    margin-top:15px;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    font-size:12px;
+    color:orange;
+    background:#fafafa;
 }
