@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Tasks</title>
-    <link rel="stylesheet" href="tasks.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Tasks</title>
+<link rel="stylesheet" href="tasks.css">
 </head>
+
 <body>
 
 <div class="task-container">
@@ -15,39 +16,76 @@
         <p>Choose a task and activate bidding</p>
     </div>
 
-    <div class="task-list">
-
-        <!-- FREE TASK -->
-        <div class="task-card free">
-            <h3>Task 1 - Data Entry</h3>
-            <p>Enter customer details accurately.</p>
-            <a href="working.html" class="btn free-btn">🟢 Free Task</a>
-        </div>
-
-        <!-- LOCKED TASKS -->
-        <div class="task-card"><h3>Task 2 - Typing Work</h3><p>Type provided document pages.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 3 - Survey Completion</h3><p>Complete online survey questions.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 4 - Product Review</h3><p>Write short review for products.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 5 - Online Research</h3><p>Search requested information.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 6 - Form Filling</h3><p>Fill digital application forms.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 7 - Copy Paste Job</h3><p>Transfer content into forms.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 8 - Social Media Sharing</h3><p>Share provided content online.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 9 - Image Tagging</h3><p>Label product images.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 10 - Transcription</h3><p>Convert audio into text.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 11 - Lead Collection</h3><p>Collect business contacts.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 12 - App Testing</h3><p>Test mobile app features.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 13 - Content Writing</h3><p>Write short online content.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 14 - Email Submission</h3><p>Send prepared emails.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 15 - PDF Conversion</h3><p>Convert files to PDF.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 16 - Spreadsheet Work</h3><p>Update Excel records.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 17 - Web Search</h3><p>Find online resources.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 18 - Review Documents</h3><p>Check document quality.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 19 - Record Update</h3><p>Update database entries.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-        <div class="task-card"><h3>Task 20 - Customer Support Task</h3><p>Respond to sample requests.</p><a href="payment.html" class="btn">🔒 Upgrade</a></div>
-
+    <!-- DEMO BALANCE -->
+    <div class="balance-box">
+        <h3>💰 Your Balance</h3>
+        <p id="balance">$05.00</p>
+        <button onclick="withdraw()" class="withdraw-btn">Withdraw </button>
+        <div id="withdraw-status"></div>
     </div>
 
+    <div class="task-list" id="taskList"></div>
+
 </div>
+
+<script>
+const tasks = [
+"Data Entry","Typing Work","Survey","Product Review","Research",
+"Form Filling","Copy Paste","Social Media","Image Tagging","Transcription",
+"Lead Collection","App Testing","Content Writing","Email Submission","PDF Conversion",
+"Spreadsheet Work","Web Search","Review Docs","Record Update","Customer Support"
+];
+
+let balance = 0;
+
+// Generate 50 tasks
+const container = document.getElementById("taskList");
+
+for (let i = 1; i <= 50; i++) {
+    let price = Math.floor(Math.random() * 31) + 10; // 10–40
+    let isFree = i <= 1; //  5 free
+
+    let card = document.createElement("div");
+    card.className = "task-card " + (isFree ? "free" : "");
+
+    card.innerHTML = `
+        <span class="price">$${price}</span>
+        <h3>Task ${i} - ${tasks[i % tasks.length]}</h3>
+        <p>Complete this task and earn rewards.</p>
+        <a href="${isFree ? 'working.html' : 'payment.html'}" 
+           class="btn ${isFree ? 'free-btn' : ''}"
+           onclick="${isFree ? `earn(${price})` : ''}">
+           ${isFree ? "🟢 Free Task" : "🔒 Upgrade"}
+        </a>
+    `;
+
+    container.appendChild(card);
+}
+
+// Earn money (demo)
+function earn(amount){
+    balance += amount;
+    document.getElementById("balance").innerText = "$" + balance.toFixed(2);
+}
+
+// Withdrawal simulation (NOT real)
+function withdraw(){
+    const status = document.getElementById("withdraw-status");
+    
+    if(balance <= 0){
+        status.innerHTML = "⚠️ upgrade for withdrawals";
+        return;
+    }
+
+    status.innerHTML = "⏳ Processing withdrawal...";
+    
+    setTimeout(() => {
+        status.innerHTML = "✅ Demo withdrawal successful!";
+        balance = 0;
+        document.getElementById("balance").innerText = "$05.00";
+    }, 2000);
+}
+</script>
 
 </body>
 </html>
