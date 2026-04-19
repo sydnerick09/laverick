@@ -20,8 +20,7 @@
     <div class="balance-box">
         <h3>💰 Balance</h3>
         <p id="balance">$0.00</p>
-        <button onclick="withdraw()" class="withdraw-btn">Withdraw</button>
-        <div id="withdraw-status"></div>
+        <button onclick="goUpgrade()" class="withdraw-btn">withdraw</button>
     </div>
 
     <div class="task-list" id="taskList"></div>
@@ -64,7 +63,7 @@ for (let i = 1; i <= 50; i++) {
         link = "working.html?task=" + i;
     } else {
         buttonText = "🔒 Upgrade";
-        link = "payment.html";
+        link = "upgrade.html";
     }
 
     card.innerHTML = `
@@ -79,25 +78,12 @@ for (let i = 1; i <= 50; i++) {
     container.appendChild(card);
 }
 
-// WITHDRAW
-function withdraw(){
-    const status = document.getElementById("withdraw-status");
-
-    if(balance <= 0){
-        status.innerHTML = "⚠️ No balance available";
-        return;
-    }
-
-    status.innerHTML = "⏳ Processing...";
-
-    setTimeout(() => {
-        balance = 0;
-        localStorage.setItem("balance", 0);
-        document.getElementById("balance").innerText = "$0.00";
-        status.innerHTML = "✅ Withdrawal successful (demo)";
-    }, 2000);
+// REDIRECT TO UPGRADE
+function goUpgrade(){
+    window.location.href = "upgrade.html";
 }
 </script>
 
 </body>
 </html>
+
