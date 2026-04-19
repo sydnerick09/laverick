@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typing Task</title>
+<link rel="stylesheet" href="working.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Typing Task</h2>
+
+    <!-- BALANCE -->
+    <div class="balance-box">
+        💰 Balance: <span id="balance">$0.00</span>
+    </div>
+
+    <p class="instruction">Type the text exactly as shown:</p>
+
+    <!-- TEXT -->
+    <div class="text-box" id="originalText">
+        The quick brown fox jumps over the lazy dog.
+    </div>
+
+    <!-- INPUT -->
+    <textarea id="userInput" placeholder="Start typing here..."></textarea>
+
+    <!-- BUTTON -->
+    <button id="submitBtn" onclick="submitTask()">✅ Submit Task</button>
+
+    <p id="message"></p>
+
+</div>
+
+<script>
+// Load saved balance
+let balance = parseFloat(localStorage.getItem("balance")) || 0;
+document.getElementById("balance").innerText = "$" + balance.toFixed(2);
+
+// Check if task already completed
+let taskCompleted = localStorage.getItem("task1Completed");
+
+if (taskCompleted === "true") {
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("submitBtn").innerText = "✔ Completed";
+}
+
+// Submit task
+function submitTask() {
+    if (taskCompleted === "true") return;
+
+    const original = document.getElementById("originalText").innerText.trim();
+    const user = document.getElementById("userInput").value.trim();
+    const message = document.getElementById("message");
+
+    if (user === original) {
+        balance += 16;
+
+        // Save balance
+        localStorage.setItem("balance", balance);
+
+        // Mark task as done
+        localStorage.setItem("task1Completed", "true");
+
+        document.getElementById("balance").innerText = "$" + balance.toFixed(2);
+        message.innerText = "✅ Task completed! $16 added.";
+        message.style.color = "green";
+
+        // Disable button
+        const btn = document.getElementById("submitBtn");
+        btn.disabled = true;
+        btn.innerText = "✔ Completed";
+
+        // Redirect back after 2 seconds
+        setTimeout(() => {
+            window.location.href = "tasks.html";
+        }, 2000);
+
+    } else {
+        message.innerText = "❌ Text does not match. Try again.";
+        message.style.color = "red";
+    }
+}
+</script>
+
+</body>
+</html>
