@@ -10,9 +10,6 @@ body {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
-   background:rgb(70, 70, 241);
-color: purple;
-    
 }
 
 /* HEADER */
@@ -44,6 +41,10 @@ color: purple;
     cursor: pointer;
 }
 
+.withdraw-btn:hover {
+    background: #e68900;
+}
+
 /* GRID */
 .task-list {
     display: grid;
@@ -59,6 +60,7 @@ color: purple;
     position: relative;
     text-align: center;
     transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.08);
 }
 
 .task-card:hover {
@@ -96,8 +98,7 @@ color: purple;
     background: #28a745;
 }
 
-/* WITHDRAW STATUS */
-#withdraw-status {
-    margin-top: 10px;
-    font-size: 14px;
+.done {
+    background: gray !important;
+    pointer-events: none;
 }
