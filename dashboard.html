@@ -24,17 +24,17 @@
     <div class="stats">
         <div class="card">
             <h4>Balance</h4>
-            <p>$120.50</p>
+            <p id="balance">$0.00</p>
         </div>
 
         <div class="card">
             <h4>Tasks Completed</h4>
-            <p>18</p>
+            <p id="tasksCompleted">0</p>
         </div>
 
         <div class="card">
             <h4>Withdrawals</h4>
-            <p>$300</p>
+            <p id="withdrawals">$0</p>
         </div>
     </div>
 
@@ -56,16 +56,101 @@
         </a>
     </div>
 
+    <!-- Recent Activities -->
+    <div class="activities">
+        <h3>📊 Recent Activities</h3>
+        <ul id="activityList">
+            <li>No activity yet</li>
+        </ul>
+    </div>
+
+    <!-- Live Withdrawals -->
+    <div class="withdrawals-box">
+        <h3>💸 Live Withdrawals</h3>
+        <div id="withdrawFeed"></div>
+    </div>
+
 </div>
 
 <!-- Footer -->
 <footer class="footer">
     <p>© 2026 EarnPro. All rights reserved.</p>
     <p>
-        <a href="#">Terms & Conditions</a> |
+        <a href="#" onclick="showTerms()">Terms & Conditions</a> |
         <a href="#">Privacy Policy</a>
     </p>
 </footer>
+
+<!-- TERMS POPUP -->
+<div id="termsBox" class="terms-box">
+    <div class="terms-content">
+        <h3>Terms & Conditions</h3>
+        <p>
+        By using EarnPro, you agree to complete tasks honestly.
+        Earnings depend on task completion and platform rules.
+        Any fraudulent activity may result in account suspension.
+        </p>
+        <button onclick="closeTerms()">Close</button>
+    </div>
+</div>
+
+<script>
+
+// LOAD BALANCE (SYNC WITH TASK PAGE)
+let balance = parseFloat(localStorage.getItem("balance")) || 0;
+document.getElementById("balance").innerText = "$" + balance.toFixed(2);
+
+// LOAD COMPLETED TASKS
+let completed = 0;
+for(let i=1;i<=50;i++){
+    if(localStorage.getItem("task"+i+"Completed")==="true"){
+        completed++;
+    }
+}
+document.getElementById("tasksCompleted").innerText = completed;
+
+// RECENT ACTIVITIES
+const activityList = document.getElementById("activityList");
+activityList.innerHTML = "";
+
+if(completed === 0){
+    activityList.innerHTML = "<li>No activity yet</li>";
+} else {
+    for(let i=1;i<=completed;i++){
+        let li = document.createElement("li");
+        li.innerText = "Completed Task #" + i;
+        activityList.appendChild(li);
+    }
+}
+
+// FAKE LIVE WITHDRAWALS
+const names = ["John","Mary","Ali","David","Jane","Omondi","Amina","Chris"];
+const withdrawFeed = document.getElementById("withdrawFeed");
+
+function generateWithdrawal(){
+    let name = names[Math.floor(Math.random()*names.length)];
+    let amount = Math.floor(Math.random()*500)+50;
+
+    let div = document.createElement("div");
+    div.innerText = name + " withdrew $" + amount;
+    div.className = "withdraw-item";
+
+    withdrawFeed.prepend(div);
+
+    setTimeout(()=>{ div.remove(); },5000);
+}
+
+setInterval(generateWithdrawal,3000);
+
+// TERMS
+function showTerms(){
+    document.getElementById("termsBox").style.display="flex";
+}
+function closeTerms(){
+    document.getElementById("termsBox").style.display="none";
+}
+
+</script>
 
 </body>
 </html>
