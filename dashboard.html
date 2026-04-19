@@ -1,18 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Dashboard</title>
 <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
 
-<h1>Welcome to your Dashboard</h1>
+<!-- Header -->
+<header class="header">
+    <h2>EarnPro</h2>
+    <div class="user-info">Welcome, User 👋</div>
+</header>
 
-<div class="cards">
-<a href="task.html">Available Tasks</a>
-<a href="post-task.html">Post Tasks</a>
-<a href="upgrade.html">Payments</a>
+<!-- Main Container -->
+<div class="container">
+
+    <h1 class="title">Dashboard</h1>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="card">
+            <h4>Balance</h4>
+            <p>$120.50</p>
+        </div>
+
+        <div class="card">
+            <h4>Tasks Completed</h4>
+            <p>18</p>
+        </div>
+
+        <div class="card">
+            <h4>Withdrawals</h4>
+            <p>$300</p>
+        </div>
+    </div>
+
+    <!-- Navigation Cards -->
+    <div class="cards">
+        <a href="task.html" class="nav-card">
+            <h3>📋 Available Tasks</h3>
+            <p>Complete tasks and earn money</p>
+        </a>
+
+        <a href="post-task.html" class="nav-card">
+            <h3>📝 Post Tasks</h3>
+            <p>Create tasks for others</p>
+        </a>
+
+        <a href="upgrade.html" class="nav-card">
+            <h3>💳 Payments</h3>
+            <p>Upgrade plan & withdraw</p>
+        </a>
+    </div>
+
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 EarnPro. All rights reserved.</p>
+    <p>
+        <a href="#">Terms & Conditions</a> |
+        <a href="#">Privacy Policy</a>
+    </p>
+</footer>
 
 </body>
 </html>
