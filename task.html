@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Tasks</title>
+<link rel="stylesheet" href="tasks.css">
+</head>
+
+<body>
+
+<div class="task-container">
+
+    <div class="header">
+        <h2>Available Tasks</h2>
+        <p>Choose a task and activate bidding</p>
+    </div>
+
+    <!-- BALANCE -->
+    <div class="balance-box">
+        <h3>💰 Balance</h3>
+        <p id="balance">$0.00</p>
+        <button onclick="goUpgrade()" class="withdraw-btn">withdraw</button>
+    </div>
+
+    <div class="task-list" id="taskList"></div>
+
+</div>
+
+<script>
+const tasks = [
+"Data Entry","Typing Work","Survey","Product Review","Research",
+"Form Filling","Copy Paste","Social Media","Image Tagging","Transcription",
+"Lead Collection","App Testing","Content Writing","Email Submission","PDF Conversion",
+"Spreadsheet Work","Web Search","Review Docs","Record Update","Customer Support"
+];
+
+// LOAD BALANCE
+let balance = parseFloat(localStorage.getItem("balance")) || 0;
+document.getElementById("balance").innerText = "$" + balance.toFixed(2);
+
+// Generate tasks
+const container = document.getElementById("taskList");
+
+for (let i = 1; i <= 50; i++) {
+
+    let price = Math.floor(Math.random() * 31) + 10; // $10–40
+    let isFree = i <= 1;
+
+    let completed = localStorage.getItem("task" + i + "Completed") === "true";
+
+    let card = document.createElement("div");
+    card.className = "task-card " + (isFree ? "free" : "");
+
+    let buttonText = "";
+    let link = "";
+
+    if (completed) {
+        buttonText = "✔ Completed";
+        link = "#";
+    } else if (isFree) {
+        buttonText = "🟢 Free Task";
+        link = "working.html?task=" + i;
+    } else {
+        buttonText = "🔒 Upgrade";
+        link = "upgrade.html";
+    }
+
+    card.innerHTML = `
+        <span class="price">$${price}</span>
+        <h3>Task ${i} - ${tasks[i % tasks.length]}</h3>
+        <p>Complete this task and earn rewards.</p>
+        <a href="${link}" class="btn ${isFree ? 'free-btn' : ''} ${completed ? 'done' : ''}">
+            ${buttonText}
+        </a>
+    `;
+
+    container.appendChild(card);
+}
+
+// REDIRECT TO UPGRADE
+function goUpgrade(){
+    window.location.href = "upgrade.html";
+}
+</script>
+
+</body>
+</html>

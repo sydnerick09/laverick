@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upgrade Plans</title>
+<link rel="stylesheet" href="upgrade.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Choose Your Plan</h2>
+    <p class="subtitle">Unlock more tasks and increase earnings check below for the recent withdrawals </p>
+
+    <div class="plans">
+
+        <!-- Beginner -->
+        <div class="plan">
+            <h3>Beginner</h3>
+            <p class="price">$5</p>
+            <p>Earn up to $7/day</p>
+            <button>Select Plan</button>
+        </div>
+
+        <!-- Intermediate -->
+        <div class="plan popular">
+            <span class="badge">Most Popular</span>
+            <h3>Intermediate</h3>
+            <p class="price">$7</p>
+            <p>Earn up to $15/day</p>
+            <button>Select Plan</button>
+        </div>
+
+        <!-- Pro -->
+        <div class="plan">
+            <h3>Pro</h3>
+            <p class="price">$12</p>
+            <p>Earn up to $20/day</p>
+            <button>Select Plan</button>
+        </div>
+
+    </div>
+
+    <!-- Fake Withdrawals Feed -->
+    <div class="withdrawals">
+        <h3>Recent Withdrawals</h3>
+        <div class="withdrawal-box" id="withdrawalBox"></div>
+    </div>
+
+</div>
+
+<script>
+    
+const users = [
+    {name: "John", flag: "🇺🇸"}, {name: "Mary", flag: "🇬🇧"},
+    {name: "David", flag: "🇨🇦"}, {name: "Sarah", flag: "🇦🇺"},
+    {name: "Michael", flag: "🇺🇸"}, {name: "James", flag: "🇬🇧"},
+    {name: "Linda", flag: "🇨🇦"}, {name: "Chris", flag: "🇦🇺"},
+    {name: "Daniel", flag: "🇺🇸"}, {name: "Sophia", flag: "🇬🇧"},
+
+    {name: "Liam", flag: "🇮🇪"}, {name: "Noah", flag: "🇺🇸"},
+    {name: "Emma", flag: "🇨🇦"}, {name: "Olivia", flag: "🇦🇺"},
+    {name: "Ava", flag: "🇺🇸"}, {name: "William", flag: "🇬🇧"},
+    {name: "Elijah", flag: "🇺🇸"}, {name: "Charlotte", flag: "🇨🇦"},
+    {name: "Amelia", flag: "🇦🇺"}, {name: "Benjamin", flag: "🇺🇸"},
+
+    {name: "Lucas", flag: "🇧🇷"}, {name: "Mia", flag: "🇮🇹"},
+    {name: "Ethan", flag: "🇫🇷"}, {name: "Harper", flag: "🇩🇪"},
+    {name: "Alexander", flag: "🇪🇸"}, {name: "Evelyn", flag: "🇳🇱"},
+    {name: "Henry", flag: "🇸🇪"}, {name: "Ella", flag: "🇳🇴"},
+    {name: "Jack", flag: "🇩🇰"}, {name: "Grace", flag: "🇫🇮"},
+
+    // 🇰🇪 Kenyan users
+    {name: "Brian", flag: "🇰🇪"}, {name: "Kevin", flag: "🇰🇪"},
+    {name: "Dennis", flag: "🇰🇪"}, {name: "Mercy", flag: "🇰🇪"},
+    {name: "Faith", flag: "🇰🇪"}, {name: "James K", flag: "🇰🇪"},
+    {name: "Peter", flag: "🇰🇪"}, {name: "Ann", flag: "🇰🇪"},
+    {name: "John K", flag: "🇰🇪"}, {name: "Mary N", flag: "🇰🇪"},
+
+    {name: "Ali", flag: "🇦🇪"}, {name: "Omar", flag: "🇸🇦"},
+    {name: "Chen", flag: "🇨🇳"}, {name: "Yuki", flag: "🇯🇵"},
+    {name: "Raj", flag: "🇮🇳"}, {name: "Carlos", flag: "🇲🇽"},
+    {name: "Diego", flag: "🇦🇷"}, {name: "Ivan", flag: "🇷🇺"},
+    {name: "Leo", flag: "🇿🇦"}, {name: "Zara", flag: "🇳🇬"}
+];
+
+const amounts = [5, 7, 10, 12, 15, 20, 25];
+const methods = ["M-Pesa", "PayPal", "Crypto", "Bank"];
+
+const box = document.getElementById("withdrawalBox");
+
+function randomTime() {
+    const times = ["just now", "2 sec ago", "5 sec ago", "10 sec ago"];
+    return times[Math.floor(Math.random() * times.length)];
+}
+
+function generateWithdrawal() {
+    const user = users[Math.floor(Math.random() * users.length)];
+    const amount = amounts[Math.floor(Math.random() * amounts.length)];
+    const method = methods[Math.floor(Math.random() * methods.length)];
+
+    const item = document.createElement("div");
+    item.className = "withdrawal-item";
+
+    item.innerHTML = `
+        <span class="left">
+            ${user.flag} ${user.name}
+        </span>
+        <span class="right">
+            $${amount} • ${method}
+        </span>
+        <div class="time">${randomTime()}</div>
+    `;
+
+    box.appendChild(item);
+
+    // Smooth scroll effect
+    box.scrollTop = box.scrollHeight;
+
+    if (box.children.length > 6) {
+        box.removeChild(box.children[0]);
+    }
+}
+
+setInterval(generateWithdrawal, 1800);
+
+</script>
+
+</body>
+</html>
