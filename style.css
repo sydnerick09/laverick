@@ -1,137 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Earnpro</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<!-- HEADER -->
-<header>
-    <div class="logo">ONLINE JOB</div>
-
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-
-    <nav id="mobileMenu">
-        <a href="signup.html">Join Now</a>
-        <a href="login.html">Login</a>
-        <a href="task.html">Available Tasks</a>
-        <a href="post-task.html">Post Tasks</a>
-    </nav>
-</header>
-
-<!-- HERO SECTION -->
-<section class="hero">
-    <h1>Start Earning Online Today 💻</h1>
-    <p>
-        ONLINE JOB is a digital platform where you can earn money by completing simple tasks,
-        offering services, and working remotely from anywhere.
-    </p>
-
-    <div class="buttons">
-        <a href="signup.html">Join Now ↗</a>
-        <a href="login.html">Login ↗</a>
-    </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features">
-    <h2>What You Can Do</h2>
-
-    <div class="feature-box">
-        <h3>✔ Complete Tasks & Get Paid</h3>
-        <p>Access daily online tasks and earn money instantly after approval.</p>
-
-        <h3>✔ Post Tasks for Others</h3>
-        <p>Businesses and individuals can post tasks and hire workers easily.</p>
-
-        <h3>✔ Bid on Tasks</h3>
-        <p>Workers can propose their prices and get selected for jobs.</p>
-
-        <h3>✔ Dashboard Tracking</h3>
-        <p>Monitor your earnings, tasks, and withdrawals in one place.</p>
-
-        <h3>✔ Fast & Secure Payments</h3>
-        <p>Receive your earnings quickly with our secure system.</p>
-    </div>
-</section>
-
-<!-- JOB CATEGORIES -->
-<section class="jobs">
-    <h2>Popular Online Work Categories</h2>
-
-    <div class="job-grid">
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>✍ Online Writing</h3>
-            <p>Create articles, blogs, and web content for clients worldwide.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>📝 Freelance Writing</h3>
-            <p>Work independently writing content for businesses and brands.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>📊 Data Entry</h3>
-            <p>Input, organize, and manage data for companies.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>📣 Digital Marketing</h3>
-            <p>Promote businesses using social media and online ads.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>📞 Virtual Assistance</h3>
-            <p>Help businesses with emails, scheduling, and admin tasks.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>💻 Software Development</h3>
-            <p>Build websites, apps, and systems for clients.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>🎓 Online Tutoring</h3>
-            <p>Teach students remotely in different subjects.</p>
-        </div>
-
-        <div class="job-card" onclick="comingSoon()">
-            <h3>🎨 Graphic Design</h3>
-            <p>Create logos, posters, and digital designs for brands.</p>
-        </div>
-
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-    <h2>Ready to Start Earning?</h2>
-    <p>Join thousands of users already making money online.</p>
-
-    <div class="buttons">
-        <a href="signup.html">Create Account</a>
-        <a href="login.html">Login</a>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>📧 Contact: payments@gmail.com</p>
-    <p>© 2026 ONLINE JOB. All rights reserved.</p>
-    <p><a href="#">Terms & Conditions</a></p>
-</footer>
-
-<script src="script.js"></script>
-
-<script>
-function comingSoon(){
-    alert("This feature is coming soon 🚀");
+/* GENERAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
 }
-</script>
 
-</body>
-</html>
+/* HEADER */
+header {
+    background: purple;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+nav {
+    display: none;
+    flex-direction: column;
+    background: blue;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+}
+
+nav a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 28px;
+}
+
+.hero p {
+    margin: 15px 0;
+}
+
+/* BUTTONS */
+.buttons a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/* FEATURES */
+.features {
+    padding: 30px 20px;
+}
+
+.feature-box h3 {
+    color: purple;
+}
+
+/* JOB SECTION */
+.jobs {
+    padding: 30px 20px;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 15px;
+}
+
+.job-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid blue;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    background: #eef;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* FOOTER */
+footer {
+    background: purple;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* SCROLL SMOOTH */
+html {
+    scroll-behavior: smooth;
+}
