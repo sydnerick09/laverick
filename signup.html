@@ -1,24 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Signup</title>
-<link rel="stylesheet" href="signup.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="signup.css">
 </head>
 <body>
 
-<form>
-<h2>Register/Sign up</h2>
+  <div class="page-wrapper">
 
-<input type="email" placeholder="Email" required>
-<input type="text" placeholder="Phone Number" required>
-<input type="text" placeholder="Username" required>
-<input type="password" placeholder="Password" required>
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">
+          <span class="logo-mark"></span>
+          <span class="logo-name">Earnpro</span>
+        </div>
+        <div class="brand-tagline">
+          <h1>Start your<br/><em>journey</em> today.</h1>
+          <p>Join thousands of people who trust earnpro to manage what matters most.</p>
+        </div>
+        <div class="brand-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="brand-bg-shape"></div>
+    </div>
 
-<button type="submit">Create Account</button>
+    <div class="form-panel">
+      <div class="form-container">
 
-<p>Already have account? <a href="login.html">Login</a></p>
+        <div class="form-header">
+          <h2>Create account</h2>
+          <p>Fill in the details below to get started.</p>
+        </div>
 
-</form>
+        <form class="signup-form" novalidate>
+
+          <div class="field-group">
+            <label for="email">Email address</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 5.5A1.5 1.5 0 014 4h12a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0116 16H4a1.5 1.5 0 01-1.5-1.5v-9z" stroke="currentColor" stroke-width="1.25"/>
+                <path d="M2.5 6l7 5 7-5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              </svg>
+              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="phone">Phone number</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.5 3h2.75l1.25 3.5-1.75 1a9 9 0 004.75 4.75l1-1.75L17 11.75V14.5A1.5 1.5 0 0115.5 16C8.044 16 2 9.956 2 2.5 2 1.672 2.672 1 3.5 1h2.5L5.5 3z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/>
+              </svg>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="username">Username</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.25"/>
+                <path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              </svg>
+              <input type="text" id="username" name="username" placeholder="Choose a username" autocomplete="username" required />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3.5" y="9" width="13" height="8.5" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
+                <path d="M6.5 9V6a3.5 3.5 0 017 0v3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              </svg>
+              <input type="password" id="password" name="password" placeholder="Min. 8 characters" autocomplete="new-password" required />
+              <button type="button" class="toggle-password" aria-label="Toggle password visibility" onclick="togglePwd()">
+                <svg id="eye-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 10S4.5 4 10 4s8.5 6 8.5 6-3 6-8.5 6S1.5 10 1.5 10z" stroke="currentColor" stroke-width="1.25"/>
+                  <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.25"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="terms-row">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            <span>Create account</span>
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+        </form>
+
+        <p class="login-link">Already have an account? <a href="login.html">Sign in</a></p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function togglePwd() {
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+  </script>
 
 </body>
 </html>
